@@ -1,14 +1,14 @@
 {
-  "name": "143",
-  "productName": "Electron tutorial app",
+  "name": "electron-product-app",
+  "productName": "Electron app",
   "version": "1.0.0",
-  "description": "",
+  "description": "It's a simple application made with ElectronJS.",
   "main": "src/index.js",
   "scripts": {
     "start": "electron src/index.js",
     "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/logo.icns --prune=true --out=release-builds",
-    "package-win": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/logo.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Tutorial App\"",
-    "package-linux": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/logo.png --prune=true --out=release-builds"
+    "package-win": "electron-packager . electron-app --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/logo.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron App\"",
+    "package-linux": "electron-packager . electron-app --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/logo.png --prune=true --out=release-builds"
   },
   "keywords": [],
   "author": "DeadBryam",

@@ -3,13 +3,11 @@ require('dotenv').config();
 const url = require("url");
 const path = require("path");
 
-if (process.env.NODE_ENV != "production") {
+if (process.env.NODE_ENV == "development") {
   require("electron-reload")(__dirname, {
     electron: path.join(__dirname, "../node_modules", ".bin", "electron")
   });
 }
-
-console.log(process.env.NODE_ENV)
 
 let mainWindow;
 let newProductWindow;
@@ -31,7 +29,6 @@ app.on("ready", () => {
   const mainMenu = Menu.buildFromTemplate(templateMenu);
 
   mainMenu.on("close", () => {
-    console.log("c cerro");
     app.quit();
   });
 
@@ -65,7 +62,7 @@ function createNewProductWindow() {
 
   const menu = Menu.buildFromTemplate(newProductMenu);
   newProductWindow.setMenu(menu);
-  // newProductWindow.setMenuBarVisibility(false);
+  newProductWindow.setMenuBarVisibility(false);
 
   newProductWindow.on("close", () => {
     newProductWindow = null;
@@ -116,7 +113,7 @@ if (process.platform === "darwin") {
   });
 }
 
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV == "development") {
   let DevTool = {
     label: "DevMenu",
     submenu: [
