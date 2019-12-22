@@ -20,6 +20,7 @@
       const { ipcRenderer } = require("electron");
 
       const products = document.querySelector("#products");
+      let buttons;
 
       ipcRenderer.on("new-product", (evt, msg) => {
         const template = `
@@ -34,7 +35,7 @@
                         <p>${msg.description}</p>
                     </div>
                     <div class="card-footer">
-                        <button id="btn-delete-${msg.name}" class="btn btn-danger btn-sm">DELETE</button>
+                        <button class="btn btn-danger btn-sm btn-delete">DELETE</button>
                     </div>
                 </div>
             </div>
@@ -42,11 +43,13 @@
 
         products.innerHTML += template;
 
-        document
-          .querySelector("#btn-delete-" + msg.name)
-          .addEventListener("click", evt => {
+        buttons = document.querySelectorAll(".btn-delete");
+        buttons.forEach(btn => {
+          btn.addEventListener("click", evt => {
             evt.target.parentElement.parentElement.parentElement.remove();
           });
+        });
+
       });
 
       ipcRenderer.on('remove-all',(evt)=>{

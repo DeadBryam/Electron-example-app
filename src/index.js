@@ -1,4 +1,5 @@
 const { app, BrowserWindow, Menu, ipcMain } = require("electron");
+require('dotenv').config();
 const url = require("url");
 const path = require("path");
 
@@ -7,6 +8,8 @@ if (process.env.NODE_ENV != "production") {
     electron: path.join(__dirname, "../node_modules", ".bin", "electron")
   });
 }
+
+console.log(process.env.NODE_ENV)
 
 let mainWindow;
 let newProductWindow;
@@ -82,8 +85,8 @@ const templateMenu = [
       },
       {
         label: "Remove all",
-        click: ()=>{
-          mainWindow.webContents.send('remove-all');
+        click: () => {
+          mainWindow.webContents.send("remove-all");
         }
       },
       {

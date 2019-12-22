@@ -6,18 +6,19 @@
   "main": "src/index.js",
   "scripts": {
     "start": "electron src/index.js",
-    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
-    "package-win": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Tutorial App\"",
-    "package-linux": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=true --out=release-builds"
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/logo.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/logo.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Tutorial App\"",
+    "package-linux": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/logo.png --prune=true --out=release-builds"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "DeadBryam",
+  "license": "MIT",
   "dependencies": {
-    "electron": "^6.1.5",
-    "electron-reload": "^1.5.0"
+    "dotenv": "^8.2.0",
+    "electron": "^6.1.5"
   },
   "devDependencies": {
-    "electron-packager": "^14.1.1"
+    "electron-packager": "^14.1.1",
+    "electron-reload": "^1.5.0"
   }
 }
