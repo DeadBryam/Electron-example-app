@@ -1,2 +1,57 @@
-<h1>HI!</h1>
-<p>sads</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Productos Electron</title>
+    <link
+      rel="stylesheet"
+      href="https://bootswatch.com/4/cosmo/bootstrap.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="container p-4">
+      <div id="products" class="row"></div>
+    </div>
+
+    <script>
+      const { ipcRenderer } = require("electron");
+
+      const products = document.querySelector("#products");
+
+      ipcRenderer.on("new-product", (evt, msg) => {
+        const template = `
+            <div class="col-12 col-lg-3 col-md-4">
+                <div class="card text-center">
+                    <div class="card-header">
+                        <h5 class="card-title">${msg.name}</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>${msg.price}</p>
+                        <hr/>
+                        <p>${msg.description}</p>
+                    </div>
+                    <div class="card-footer">
+                        <button id="btn-delete-${msg.name}" class="btn btn-danger btn-sm">DELETE</button>
+                    </div>
+                </div>
+            </div>
+            `;
+
+        products.innerHTML += template;
+
+        document
+          .querySelector("#btn-delete-" + msg.name)
+          .addEventListener("click", evt => {
+            evt.target.parentElement.parentElement.parentElement.remove();
+          });
+      });
+
+      ipcRenderer.on('remove-all',(evt)=>{
+        products.innerHTML = "";
+      })
+    </script>
+  </body>
+</html>
